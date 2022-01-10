@@ -1,0 +1,46 @@
+﻿@namespace TimeWarpCli.Components
+
+@inherits BaseComponent
+
+<div>@Input</div>
+<div class="row font-mono">
+
+  <div id="@Id" class="bg-gray-500 p-3">
+    <div id="InnerConsole" class="bg-gray-800 p-3 rounded">
+      <div id="Outputs" class="text-gray-50">
+        @for (var index = 0; index < Output.Count; index++)
+        {
+          <text>@($"{index}: {Output[index]}")</text>
+          <br />
+        }
+      </div>
+      <div id="InputArea" class="bg-transparent p-3 d-flex">
+        <textarea class="bg-transparent text-gray-50 border-0 min-width-full resize-none outline-none focus:outline-none focus:box"
+                  autofocus
+                  placeholder="Enter command"
+                  @bind-value=Input
+                  @bind-value:event="oninput"
+                  @onkeypress=HandleKeyPress
+                  @onkeypress:preventDefault=IsPreventDefaultKey
+                  </textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  ::placeholder {
+    color: red;
+  }
+
+  #InputArea {
+   display:flex
+  }
+
+  #InputArea:before {
+    content: '> ';
+    color: grey;
+    vertical-align: top;
+  }
+
+</style>

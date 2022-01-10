@@ -11,10 +11,12 @@ namespace TimeWarpCli.Client
   using PeterLeslieMorris.Blazor.Validation;
   using ProtoBuf.Grpc.Client;
   using System;
+  using System.CommandLine;
   using System.Net.Http;
   using System.Reflection;
   using System.Threading.Tasks;
   using TimeWarpCli.Analyzer;
+  using TimeWarpCli.Client.CommandLine;
   using TimeWarpCli.Components;
   using TimeWarpCli.Features.ClientLoaders;
   using TimeWarpCli.Features.EventStreams;
@@ -47,6 +49,11 @@ namespace TimeWarpCli.Client
       aServiceCollection.AddScoped<IClientLoaderConfiguration, ClientLoaderConfiguration>();
 
       ConfigureGrpc(aServiceCollection);
+
+      aServiceCollection.AddScoped<Parser>
+      (
+        (IServiceProvider aServiceProvider) => new ParserBuilder(aServiceProvider, aServiceCollection).Build()
+      );
 
     }
 
