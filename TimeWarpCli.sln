@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2902FDFD-016E-4BF7-8B41-53D674FA53DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.Shared", "Source\Shared\TimeWarpCli.Shared.csproj", "{F65F3FA3-3831-4701-A746-51739E5B81F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.Server", "Source\Server\TimeWarpCli.Server.csproj", "{47267D92-24FD-44B0-A41F-B39C7BEBF18B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.Client", "Source\Client\TimeWarpCli.Client.csproj", "{00C1EF22-1C57-4B6A-B711-A65FCE1DBD8E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.Client.Integration.Tests", "Tests\Client.Integration.Tests\TimeWarpCli.Client.Integration.Tests.csproj", "{5CD6F016-6C08-49FA-A402-83BA2744F304}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.EndToEnd.Selenium.Tests", "Tests\EndToEnd.Selenium.Tests\TimeWarpCli.EndToEnd.Selenium.Tests.csproj", "{F5A7AA92-EFDF-466F-8A24-44B84C092083}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.Server.Integration.Tests", "Tests\Server.Integration.Tests\TimeWarpCli.Server.Integration.Tests.csproj", "{E6E1B9EA-9206-485E-BE1B-135AADFAA735}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.EndToEnd.TestCafe.Tests", "Tests\EndToEnd.TestCafe.Tests\TimeWarpCli.EndToEnd.TestCafe.Tests.csproj", "{ACFF29D2-2797-4FCD-8742-2E90E7E1754B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B623CDC-91E7-47FD-A039-A40427FB7FE8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		CodeMaid.config = CodeMaid.config
+		Directory.Build.props = Directory.Build.props
+		global.json = global.json
+		NuGet.config = NuGet.config
+		README.md = README.md
+		Run.ps1 = Run.ps1
+		.template.config\template.json = .template.config\template.json
+		TestCafe.ps1 = TestCafe.ps1
+		TimeWarp.ruleset = TimeWarp.ruleset
+		UNLICENSE.md = UNLICENSE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6DDDEA23-D242-4AB1-92E0-967A60941A81}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Build\TimeWarpCli.Template.yml = ..\..\..\..\Build\TimeWarpCli.Template.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeWarpCli.TypeScript", "Source\TypeScript\TimeWarpCli.TypeScript.csproj", "{98407295-8769-4164-85E2-E616D6765338}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analyzers", "Analyzers", "{831BFD66-CAC3-4E90-AE1B-0BA8E5D49FB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EndToEnd.Playwright.Tests", "Tests\EndToEnd.Playwright.Tests\EndToEnd.Playwright.Tests.csproj", "{77DF0E93-7A26-442E-A995-BACAD6A3B3C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F65F3FA3-3831-4701-A746-51739E5B81F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F65F3FA3-3831-4701-A746-51739E5B81F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F65F3FA3-3831-4701-A746-51739E5B81F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F65F3FA3-3831-4701-A746-51739E5B81F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47267D92-24FD-44B0-A41F-B39C7BEBF18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47267D92-24FD-44B0-A41F-B39C7BEBF18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47267D92-24FD-44B0-A41F-B39C7BEBF18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47267D92-24FD-44B0-A41F-B39C7BEBF18B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00C1EF22-1C57-4B6A-B711-A65FCE1DBD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C1EF22-1C57-4B6A-B711-A65FCE1DBD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C1EF22-1C57-4B6A-B711-A65FCE1DBD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C1EF22-1C57-4B6A-B711-A65FCE1DBD8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CD6F016-6C08-49FA-A402-83BA2744F304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CD6F016-6C08-49FA-A402-83BA2744F304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CD6F016-6C08-49FA-A402-83BA2744F304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CD6F016-6C08-49FA-A402-83BA2744F304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A7AA92-EFDF-466F-8A24-44B84C092083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A7AA92-EFDF-466F-8A24-44B84C092083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A7AA92-EFDF-466F-8A24-44B84C092083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A7AA92-EFDF-466F-8A24-44B84C092083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E1B9EA-9206-485E-BE1B-135AADFAA735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E1B9EA-9206-485E-BE1B-135AADFAA735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E1B9EA-9206-485E-BE1B-135AADFAA735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E1B9EA-9206-485E-BE1B-135AADFAA735}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACFF29D2-2797-4FCD-8742-2E90E7E1754B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFF29D2-2797-4FCD-8742-2E90E7E1754B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFF29D2-2797-4FCD-8742-2E90E7E1754B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFF29D2-2797-4FCD-8742-2E90E7E1754B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98407295-8769-4164-85E2-E616D6765338}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98407295-8769-4164-85E2-E616D6765338}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98407295-8769-4164-85E2-E616D6765338}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98407295-8769-4164-85E2-E616D6765338}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77DF0E93-7A26-442E-A995-BACAD6A3B3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77DF0E93-7A26-442E-A995-BACAD6A3B3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77DF0E93-7A26-442E-A995-BACAD6A3B3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77DF0E93-7A26-442E-A995-BACAD6A3B3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5CD6F016-6C08-49FA-A402-83BA2744F304} = {2902FDFD-016E-4BF7-8B41-53D674FA53DD}
+		{F5A7AA92-EFDF-466F-8A24-44B84C092083} = {2902FDFD-016E-4BF7-8B41-53D674FA53DD}
+		{E6E1B9EA-9206-485E-BE1B-135AADFAA735} = {2902FDFD-016E-4BF7-8B41-53D674FA53DD}
+		{ACFF29D2-2797-4FCD-8742-2E90E7E1754B} = {2902FDFD-016E-4BF7-8B41-53D674FA53DD}
+		{77DF0E93-7A26-442E-A995-BACAD6A3B3C7} = {2902FDFD-016E-4BF7-8B41-53D674FA53DD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16FA64C2-4A0E-42D4-94E6-C8CFDE84597E}
+	EndGlobalSection
+EndGlobal
