@@ -11,12 +11,14 @@ namespace TimeWarpCli.Components
   {
     [Inject] private ClientLoader ClientLoader { get; set; }
     [Inject] private JsonRequestHandler JsonRequestHandler { get; set; }
+    [Inject] private ReduxDevToolsInterop ReduxDevToolsInterop { get; set; }
     [Inject] private RouteManager RouteManager { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool aFirstRender)
     {
-      await JsonRequestHandler.InitAsync().ConfigureAwait(false);
-      await ClientLoader.LoadClient().ConfigureAwait(false);
+      await JsonRequestHandler.InitAsync();
+      await ReduxDevToolsInterop.InitAsync();
+      await ClientLoader.LoadClient();
     }
   }
 }

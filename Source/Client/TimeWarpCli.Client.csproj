@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <Description>Blazor Client</Description>
+    <Description>Blazor Client</Description>   
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>ReduxDevToolsEnabled</DefineConstants>
-
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +32,7 @@
     <PackageReference Include="Blazor-State" Version="$(BlazorStateVersion)" />
     <PackageReference Include="Dawn.Guard" Version="$(DawnGuardVersion)" />
     <PackageReference Include="PeterLeslieMorris.Blazor.FluentValidation" Version="$(PeterLeslieMorrisBlazorFluentValidationVersion)" />
+    <PackageReference Include="System.CommandLine.Experimental" Version="0.3.0-alpha.19317.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,10 +11,12 @@ namespace TimeWarpCli.Client
   using PeterLeslieMorris.Blazor.Validation;
   using ProtoBuf.Grpc.Client;
   using System;
+  using System.CommandLine;
   using System.Net.Http;
   using System.Reflection;
   using System.Threading.Tasks;
   using TimeWarpCli.Analyzer;
+  using TimeWarpCli.Client.CommandLine;
   using TimeWarpCli.Components;
   using TimeWarpCli.Features.ClientLoaders;
   using TimeWarpCli.Features.EventStreams;
@@ -29,6 +31,7 @@ namespace TimeWarpCli.Client
       (
         (aOptions) =>
         {
+          aOptions.UseReduxDevToolsBehavior = true;
           aOptions.Assemblies =
             new Assembly[]
             {
@@ -47,6 +50,19 @@ namespace TimeWarpCli.Client
       aServiceCollection.AddScoped<IClientLoaderConfiguration, ClientLoaderConfiguration>();
 
       ConfigureGrpc(aServiceCollection);
+
+      aServiceCollection.AddScoped<Parser>
+      (
+        (IServiceProvider aServiceProvider) =>
+        {
+          Console.WriteLine("Yo Yo hear me");
+          var root = new RootCommand();
+          Console.WriteLine("Yo Yo hear me 2");
+          var parserBuilder = new ParserBuilder(aServiceProvider, aServiceCollection);
+          Console.WriteLine("Yo Yo hear me 3");
+          return parserBuilder.Build();
+        }
+      );
 
     }
 
