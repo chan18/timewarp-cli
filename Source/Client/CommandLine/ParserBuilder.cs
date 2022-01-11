@@ -26,17 +26,23 @@
       IServiceCollection aServiceCollection
     ) : base(new RootCommand())
     {
-      //ServiceProvider = aServiceProvider;
-
-      //ServiceCollection = aServiceCollection;
-
-      //string xmlPath = Assembly.GetAssembly(typeof(ParserBuilder)).Location.Replace(".dll", ".xml");
-      //XmlDocReader = new XmlDocReader(xmlPath);
-
-      //ConfigureServices(ServiceCollection);
-
-      //Configure();
       Console.WriteLine("Yo Yo");
+      Console.WriteLine("ParserBuilder ctor");
+      ServiceProvider = aServiceProvider;
+      Console.WriteLine("ParserBuilder ctor 2");
+      ServiceCollection = aServiceCollection;
+      Console.WriteLine("ParserBuilder ctor 3");
+      string xmlPath = Assembly.GetAssembly(typeof(ParserBuilder)).Location.Replace(".dll", ".xml");
+      Console.WriteLine("ParserBuilder ctor 4");
+      XmlDocReader = new XmlDocReader(xmlPath);
+      Console.WriteLine("ParserBuilder ctor 5");
+
+      ConfigureServices(ServiceCollection);
+      Console.WriteLine("ParserBuilder ctor 6");
+
+      Configure();
+      Console.WriteLine("ParserBuilder ctor 7");
+
     }
 
     public void ConfigureServices(IServiceCollection aServiceCollection)

@@ -15,13 +15,15 @@
         }
       </div>
       <div id="InputArea" class="bg-transparent p-3 d-flex">
-        <textarea class="bg-transparent text-gray-50 border-0 min-width-full resize-none outline-none focus:outline-none focus:box"
+        <textarea class="bg-transparent text-gray-50 border-0 min-w-full resize-none outline-none focus:outline-none focus:box"
                   autofocus
                   placeholder="Enter command"
                   @bind-value=Input
                   @bind-value:event="oninput"
                   @onkeypress=HandleKeyPress
-                  @onkeypress:preventDefault=IsPreventDefaultKey
+                  @onkeydown=HandleKeyDown
+                  @onkeydown:preventDefault=KeyDownPreventDefault
+                  >
                   </textarea>
       </div>
     </div>

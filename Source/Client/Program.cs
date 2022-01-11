@@ -31,6 +31,7 @@ namespace TimeWarpCli.Client
       (
         (aOptions) =>
         {
+          aOptions.UseReduxDevToolsBehavior = true;
           aOptions.Assemblies =
             new Assembly[]
             {
@@ -52,7 +53,15 @@ namespace TimeWarpCli.Client
 
       aServiceCollection.AddScoped<Parser>
       (
-        (IServiceProvider aServiceProvider) => new ParserBuilder(aServiceProvider, aServiceCollection).Build()
+        (IServiceProvider aServiceProvider) =>
+        {
+          Console.WriteLine("Yo Yo hear me");
+          var root = new RootCommand();
+          Console.WriteLine("Yo Yo hear me 2");
+          var parserBuilder = new ParserBuilder(aServiceProvider, aServiceCollection);
+          Console.WriteLine("Yo Yo hear me 3");
+          return parserBuilder.Build();
+        }
       );
 
     }

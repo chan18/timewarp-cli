@@ -12,8 +12,9 @@
 
   public partial class Cli : BaseComponent
   {
-    protected readonly string TabKey = "9";
-    //[Inject] public Parser Parser { get; set; }
+    protected readonly string TabKey = "Tab";
+    protected readonly string EnterKey = "Enter";
+    [Inject] public Parser Parser { get; set; }
 
     protected string Input { get; set; }
 
@@ -21,9 +22,10 @@
 
     //protected string Text => string.Join("<br/>", Output);
 
-    //private ParseResult ParseResult { get; set; }
+    private ParseResult ParseResult { get; set; }
 
-    private bool IsPreventDefaultKey { get; set; }
+    private bool KeyPressPreventDefault { get; set; }
+    private bool KeyDownPreventDefault { get; set; }
     private int SuggestedIndex { get; set; }
 
     private string Suggestion => Suggestions.Count > 0 ? Suggestions[SuggestedIndex] : null;
@@ -36,22 +38,32 @@
       Suggestions = new List<string>();
     }
 
+    private void HandleKeyDown(KeyboardEventArgs aKeyboardEventArgs)
+    {
+      Console.WriteLine($"HandleKeyDown Key:{aKeyboardEventArgs.Key}");
+
+      if (aKeyboardEventArgs.Key == TabKey)
+      {
+        KeyDownPreventDefault = true;
+        HandleTabKeyPress(aKeyboardEventArgs);
+      }
+      else
+      {
+        KeyDownPreventDefault = false;
+        Suggestions.Clear();
+      }
+    }
+
     protected async Task HandleKeyPress(KeyboardEventArgs aKeyboardEventArgs)
     {
       Console.WriteLine($"HandleKeyPress Key:{aKeyboardEventArgs.Key} Input:{Input}");
-      if(aKeyboardEventArgs.Key == TabKey)
-      {
-        IsPreventDefaultKey = true;
-        Console.WriteLine("Set IsPreventDefaultKey to true");
-      }
-      if (aKeyboardEventArgs.Key == "Enter")
+      if (aKeyboardEventArgs.Key == EnterKey)
       {
         WriteLine("You pressed Enter");
         try
         {
           string[] args = Input?.Split(' ');
-          //_ = await Parser.InvokeAsync(args);
-          await Task.Delay(0);
+          _ = await Parser.InvokeAsync(args);
         }
         catch (Exception e)
         {
@@ -60,14 +72,7 @@
         }
         // Process the command
       }
-      if (aKeyboardEventArgs.Key == "Tab")
-      {
-        HandleTabKeyPress(aKeyboardEventArgs);
-      }
-      else
-      {
-        Suggestions.Clear();
-      }
+
     }
 
     protected override Task OnInitializedAsync()
@@ -86,43 +91,43 @@
     {
       ;
       Console.WriteLine($"HandleTabKeyPress ShiftKey:{aKeyboardEventArgs.ShiftKey}");
-      //if (Suggestions.Count > 0)
-      //{
-      //  SuggestedIndex = aKeyboardEventArgs.ShiftKey ? MovePrevious() : MoveNext();
-      //}
-      //else
-      //{
-      //  Console.WriteLine($"HandleTabKeyPress Parsing Input:{Input}");
-      //  ParseResult = Parser.Parse(Input);
-      //  Suggestions = ParseResult.Suggestions().ToList();
-      //  SuggestedIndex = 0;
-      //}
-      ////WriteLine(Suggestion);
-      //Console.WriteLine($"HandleTabKeyPress Suggestion:{Suggestion}");
-      //IEnumerable<Token> matchedTokens = ParseResult.Tokens.TakeWhile(aToken => !ParseResult.UnmatchedTokens.Contains(aToken.Value));
+      if (Suggestions.Count > 0)
+      {
+        SuggestedIndex = aKeyboardEventArgs.ShiftKey ? MovePrevious() : MoveNext();
+      }
+      else
+      {
+        Console.WriteLine($"HandleTabKeyPress Parsing Input:{Input}");
+        ParseResult = Parser.Parse(Input);
+        Suggestions = ParseResult.Suggestions().ToList();
+        SuggestedIndex = 0;
+      }
+      WriteLine(Suggestion);
+      Console.WriteLine($"HandleTabKeyPress Suggestion:{Suggestion}");
+      IEnumerable<Token> matchedTokens = ParseResult.Tokens.TakeWhile(aToken => !ParseResult.UnmatchedTokens.Contains(aToken.Value));
 
-      //string newInput = string.Join(" ", matchedTokens.Select(t => t.Value));
-      //Console.WriteLine($"HandleTabKeyPress matchedTokens Joined:{newInput}");
-      //newInput = $"{newInput} {Suggestion}";
+      string newInput = string.Join(" ", matchedTokens.Select(t => t.Value));
+      Console.WriteLine($"HandleTabKeyPress matchedTokens Joined:{newInput}");
+      newInput = $"{newInput} {Suggestion}";
 
-      //Input = newInput ?? Input;
+      Input = newInput ?? Input;
 
-      //Console.WriteLine($"HandleTabKeyPress Input:{Input}");
-      //StateHasChanged();
+      Console.WriteLine($"HandleTabKeyPress Input:{Input}");
+      StateHasChanged();
     }
 
-    //private int MoveNext()
-    //{
-    //  //WriteLine("You pressed Tab");
-    //  return (SuggestedIndex == Suggestions.Count - 1) ? 0 : SuggestedIndex + 1;
-    //  ;
-    //}
+    private int MoveNext()
+    {
+      //WriteLine("You pressed Tab");
+      return (SuggestedIndex == Suggestions.Count - 1) ? 0 : SuggestedIndex + 1;
+      ;
+    }
 
-    //private int MovePrevious()
-    //{
-    //  //WriteLine("You pressed Shft-Tab");
-    //  return (SuggestedIndex == 0) ? Suggestions.Count - 1 : SuggestedIndex - 1;
-    //  ;
-    //}
+    private int MovePrevious()
+    {
+      //WriteLine("You pressed Shft-Tab");
+      return (SuggestedIndex == 0) ? Suggestions.Count - 1 : SuggestedIndex - 1;
+      ;
+    }
   }
 }
